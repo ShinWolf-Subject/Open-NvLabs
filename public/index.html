@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NvLabs API Documentation">
+  <meta name="theme-color" content="#09090b">
+  <title>NvLab's API Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/676ca851f3.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/x-icon" href="https://nievexsviz.my.id/nv.ico">
+  <link rel="stylesheet" href="https://cdn.yupra.my.id/yp/08598m17.css" title="css" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'mono': ['Ubuntu Mono', 'monospace'],
+            'sans': ['Inter', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            border: "hsl(240 3.7% 15.9%)",
+            input: "hsl(240 3.7% 15.9%)",
+            ring: "hsl(240 4.9% 83.9%)",
+            background: "hsl(240 10% 3.9%)",
+            foreground: "hsl(0 0% 98%)",
+            primary: {
+              DEFAULT: "hsl(0 0% 98%)",
+              foreground: "hsl(240 5.9% 10%)"
+            },
+            secondary: {
+              DEFAULT: "hsl(240 3.7% 15.9%)",
+              foreground: "hsl(0 0% 98%)"
+            },
+            muted: {
+              DEFAULT: "hsl(240 3.7% 15.9%)",
+              foreground: "hsl(240 5% 64.9%)"
+            },
+            accent: {
+              DEFAULT: "hsl(240 3.7% 15.9%)",
+              foreground: "hsl(0 0% 98%)"
+            },
+            card: {
+              DEFAULT: "hsl(240 10% 3.9%)",
+              foreground: "hsl(0 0% 98%)"
+            }
+          },
+          animation: {
+            'slide-down': 'slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+            'slide-up': 'slideUp 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+            'fade-in': 'fadeIn 0.5s ease-out',
+            'shimmer': 'shimmer 3s ease-in-out infinite',
+            'pulse-subtle': 'pulseSubtle 2s ease-in-out infinite',
+          },
+          keyframes: {
+            slideDown: {
+              from: { opacity: 0, transform: 'translateY(-8px)' },
+              to: { opacity: 1, transform: 'translateY(0)' }
+            },
+            slideUp: {
+              from: { opacity: 1, transform: 'translateY(0)' },
+              to: { opacity: 0, transform: 'translateY(-8px)' }
+            },
+            fadeIn: {
+              from: { opacity: 0 },
+              to: { opacity: 1 }
+            },
+            shimmer: {
+              '0%, 100%': { backgroundPosition: '0% center' },
+              '50%': { backgroundPosition: '100% center' }
+            },
+            pulseSubtle: {
+              '0%, 100%': { opacity: 1 },
+              '50%': { opacity: 0.8 }
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-foreground antialiased font-sans min-h-screen">
+  <header class="sticky top-0 z-50 glass-dark border-b border-border py-4 fade-in">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg overflow-hidden flex">
+            <img src="https://cdn.yupra.my.id/yp/p14grv6y.png" alt="Nieve" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <span class="text-lg font-bold text-foreground">NvLabs</span>
+            <span class="text-xs text-muted-foreground ml-2">API Documentation</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <span class="px-3 py-1 bg-secondary rounded-md text-xs font-medium text-foreground border border-border">v1.0</span>
+          <button class="no-print text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-secondary" onclick="window.open('https://whatsapp.com/channel/0029VbB9Isc4Y9lwKUke7K1v', '_blank')">
+            <i class="fab fa-whatsapp text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div class="text-center mb-10 sm:mb-12 fade-in">
+      <h1 class="text-4xl sm:text-5xl font-bold gradient-text mb-3 sm:mb-4 leading-tight">
+        <span id="title">API Documentation</span>
+      </h1>
+      <p class="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+        <span id="description">Comprehensive API documentation for developers with interactive testing</span>
+      </p>
+    </div>
+    <div class="mb-8 fade-in">
+      <div class="flex items-center justify-between mb-3">
+        <label class="block text-sm font-medium text-muted-foreground">API Server</label>
+        <span class="text-xs text-muted-foreground">Select your deployment environment</span>
+      </div>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <span class="material-icons text-muted-foreground text-lg">dns</span>
+        </div>
+        <select id="hostSelect" class="w-full input-dark pl-12 pr-10 py-3 rounded-lg text-sm focus:ring-2 focus:ring-purple-500/20">
+          <option id="valueURL" value="" selected>Select Server</option>
+        </select>
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+          <span class="material-icons text-muted-foreground text-lg">expand_more</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10 fade-in">
+      <div class="stats-card p-5 sm:p-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold text-foreground mb-1 animate-pulse-subtle" id="totalEndpoints">0</div>
+            <div class="text-sm text-muted-foreground">Total Endpoints</div>
+          </div>
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
+            <span class="material-icons text-white text-sm sm:text-base">dns</span>
+          </div>
+        </div>
+      </div>
+      <div class="stats-card p-5 sm:p-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold text-foreground mb-1 animate-pulse-subtle" id="totalCategories">0</div>
+            <div class="text-sm text-muted-foreground">Categories</div>
+          </div>
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg">
+            <span class="material-icons text-white text-sm sm:text-base">folder</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-8 fade-in">
+      <div class="flex items-center justify-between mb-3">
+        <label class="block text-sm font-medium text-muted-foreground">Search</label>
+        <span class="text-xs text-muted-foreground" id="searchCount">0 results</span>
+      </div>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <span class="material-icons text-muted-foreground text-lg">search</span>
+        </div>
+        <input type="text" id="searchInput" placeholder="Search endpoints, methods, categories..." class="w-full input-dark pl-12 pr-4 py-3 rounded-lg text-sm focus:ring-2 focus:ring-purple-500/20">
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+          <button id="clearSearch" class="text-muted-foreground hover:text-foreground transition-colors p-1">
+            <span class="material-icons text-lg">close</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="content" class="space-y-6">
+      <div id="noResults" class="text-center py-16 sm:py-24 hidden">
+        <div class="max-w-md mx-auto">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary flex items-center justify-center">
+            <span class="material-icons text-muted-foreground text-3xl">search_off</span>
+          </div>
+          <h3 class="text-lg font-semibold text-foreground mb-2">No results found</h3>
+          <p class="text-sm text-muted-foreground mb-4">Try adjusting your search terms</p>
+          <button id="resetSearch" class="text-sm px-4 py-2 bg-secondary hover:bg-secondary/80 rounded-lg transition-colors">
+            Reset Search
+          </button>
+        </div>
+      </div>
+      <div id="apiList" class="space-y-6"></div>
+    </div>
+    <footer class="mt-12 sm:mt-16 pt-8 border-t border-border text-center space-y-3">
+      <p class="text-muted-foreground text-sm">
+        © <span id="year">2025</span> NvLabs API — All Rights Reserved
+      </p>
+      <p class="text-muted-foreground text-xs space-x-4">
+        <a href="/privacy-policy" class="hover:text-foreground transition-colors highlight">Privacy Policy</a>
+        <span aria-hidden="true">•</span>
+        <a href="/terms-of-service" class="hover:text-foreground transition-colors highlight">Terms of Service</a>
+        <span aria-hidden="true">•</span>
+        <a href="/support" class="hover:text-foreground transition-colors highlight">Support</a>
+      </p>
+    </footer>
+  </main>
+  <script>
+    async function loadApiData() {
+      try {
+        const res = await fetch("/adm/nvrapi");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const apiData = await res.json();
+        
+        // Group endpoints by category
+        const categories = {};
+        apiData.endpoints.forEach(endpoint => {
+          if (!categories[endpoint.category]) {
+            categories[endpoint.category] = [];
+          }
+          categories[endpoint.category].push(endpoint);
+        });
+        
+        // Set server URL
+        const option = document.getElementById('valueURL');
+        option.value = apiData.baseURL;
+        option.textContent = `${apiData.baseURL} - Main Server`;
+        
+        // Set metadata
+        document.getElementById('title').textContent = apiData.title || 'API Documentation';
+        document.getElementById('description').textContent = apiData.description || 'Comprehensive API documentation';
+        document.getElementById("year").textContent = new Date().getFullYear();
+        document.getElementById('totalEndpoints').textContent = apiData.endpoints.length;
+        document.getElementById('totalCategories').textContent = Object.keys(categories).length;
+        
+        // Generate HTML for API endpoints
+        const apiList = document.getElementById('apiList');
+        let categoryIndex = 0;
+        
+        for (const [categoryName, endpoints] of Object.entries(categories)) {
+          const categoryGroup = document.createElement('div');
+          categoryGroup.className = 'category-group fade-in';
+          categoryGroup.setAttribute('data-category', categoryName);
+          
+          const categoryHeader = `
+                        <div class="category-header overflow-hidden">
+                            <button onclick="toggleCategory(${categoryIndex})" 
+                                    class="w-full px-5 sm:px-6 py-4 text-left flex items-center justify-between transition-colors duration-200 group">
+                                <div class="flex items-center space-x-3">
+                                    <span class="material-icons text-lg text-purple-400 group-hover:scale-110 transition-transform">folder</span>
+                                    <div class="text-left">
+                                        <h2 class="font-bold text-foreground text-sm sm:text-base">${categoryName}</h2>
+                                        <p class="text-xs text-muted-foreground mt-0.5">${endpoints.length} endpoint${endpoints.length !== 1 ? 's' : ''}</p>
+                                    </div>
+                                </div>
+                                <span class="material-icons text-muted-foreground group-hover:text-foreground transition-all duration-200 group-hover:scale-110" 
+                                      id="category-icon-${categoryIndex}">expand_more</span>
+                            </button>
+                            <div id="category-${categoryIndex}" class="hidden">
+                                <div class="p-5 sm:p-6 border-t border-border">
+                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                    `;
+          
+          let categoryContent = '';
+          let endpointIndex = 0;
+          
+          endpoints.forEach(endpoint => {
+            // Method badges
+            const methodBadges = endpoint.methods.map(method => {
+              let colorClass = 'method-get';
+              if (method === 'POST') colorClass = 'method-post';
+              else if (method === 'PUT') colorClass = 'method-put';
+              else if (method === 'DELETE') colorClass = 'method-delete';
+              return `<span class="method-badge ${colorClass}">${method}</span>`;
+            }).join(' ');
+            
+            categoryContent += `
+                            <div class="endpoint-card p-5 api-item" 
+                                 data-method="${endpoint.methods[0]}" 
+                                 data-path="${endpoint.route}" 
+                                 data-name="${endpoint.name}" 
+                                 data-category="${endpoint.category}">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div class="flex flex-wrap gap-2">
+                                        ${methodBadges}
+                                    </div>
+                                    <button onclick="toggleEndpoint(${categoryIndex}, ${endpointIndex})" 
+                                            class="text-muted-foreground hover:text-foreground transition-colors p-1 rounded hover:bg-secondary">
+                                        <span class="material-icons text-lg" id="endpoint-icon-${categoryIndex}-${endpointIndex}">expand_more</span>
+                                    </button>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h3 class="font-semibold text-foreground text-sm truncate" title="${endpoint.name}">
+                                            ${endpoint.name}
+                                        </h3>
+                                        <span class="tag">${endpoint.route}</span>
+                                    </div>
+                                    <p class="text-xs text-muted-foreground line-clamp-2">${endpoint.description}</p>
+                                </div>
+        
+                                <div id="endpoint-${categoryIndex}-${endpointIndex}" class="hidden mt-4 pt-4 border-t border-border">
+                                    <div class="text-xs font-semibold text-foreground mb-3 flex items-center">
+                                        <span class="material-icons text-sm mr-2 text-purple-400">play_circle</span>
+                                        Try it out
+                                    </div>
+                                    
+                                    <form id="form-${categoryIndex}-${endpointIndex}" 
+                                          onsubmit="executeRequest(event, ${categoryIndex}, ${endpointIndex}, '${endpoint.methods[0]}', '${endpoint.route}')">
+                                        <div class="space-y-3 mb-4">
+                        `;
+            
+            // Input parameters
+            if (endpoint.paramsSchema && Object.keys(endpoint.paramsSchema).length > 0) {
+              Object.entries(endpoint.paramsSchema).forEach(([paramName, paramSchema]) => {
+                const isRequired = paramSchema.required;
+                const typeInfo = paramSchema.type;
+                
+                categoryContent += `
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1.5">
+                                            <label class="text-xs font-medium text-foreground">
+                                                ${paramName} ${isRequired ? '<span class="text-red-400">*</span>' : ''}
+                                            </label>
+                                            <span class="text-xs text-muted-foreground">${typeInfo}</span>
+                                        </div>
+                                        ${typeInfo === 'file' ? `
+                                            <input type="file" 
+                                                   name="${paramName}" 
+                                                   class="w-full text-xs input-dark px-3 py-2 rounded-lg file:mr-4 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:bg-secondary file:text-foreground"
+                                                   ${isRequired ? 'required' : ''}>
+                                        ` : `
+                                            <input type="text" 
+                                                   name="${paramName}" 
+                                                   placeholder="${paramName}"
+                                                   class="w-full input-dark px-3 py-2 rounded-lg text-xs placeholder:text-muted-foreground"
+                                                   ${isRequired ? 'required' : ''}>
+                                        `}
+                                    </div>
+                                `;
+              });
+            } else {
+              categoryContent += `
+                                <div class="text-center py-3 px-4 bg-secondary/50 rounded-lg">
+                                    <span class="material-icons text-muted-foreground text-sm mr-2">check_circle</span>
+                                    <span class="text-xs text-muted-foreground">No parameters required</span>
+                                </div>
+                            `;
+            }
+            
+            categoryContent += `
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <button type="submit" 
+                                                    class="btn-primary text-white px-4 py-2 rounded-lg text-xs font-medium flex items-center space-x-2">
+                                                <span class="material-icons text-sm">send</span>
+                                                <span>Execute Request</span>
+                                            </button>
+                                            <button type="button" 
+                                                    id="clear-${categoryIndex}-${endpointIndex}" 
+                                                    onclick="clearResponse(${categoryIndex}, ${endpointIndex})" 
+                                                    class="btn-secondary px-4 py-2 rounded-lg text-xs font-medium hidden">
+                                                Clear
+                                            </button>
+                                        </div>
+                                    </form>
+        
+                                    <div id="response-${categoryIndex}-${endpointIndex}" class="hidden mt-4">
+                                        <div class="text-xs font-semibold text-foreground mb-2 flex items-center">
+                                            <span class="material-icons text-sm mr-2 text-green-400">code</span>
+                                            Response
+                                        </div>
+                                        <div class="code-block p-4">
+                                            <div class="max-h-64 overflow-auto" id="response-content-${categoryIndex}-${endpointIndex}"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+            
+            endpointIndex++;
+          });
+          
+          const categoryFooter = `
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+          
+          categoryGroup.innerHTML = categoryHeader + categoryContent + categoryFooter;
+          apiList.appendChild(categoryGroup);
+          categoryIndex++;
+        }
+        
+        // Initialize search
+        initializeSearch();
+        
+      } catch (err) {
+        console.error("Failed to load openapi.json:", err);
+        showError("Failed to load API documentation. Please try again later.");
+      }
+    }
+    
+    function showError(message) {
+      const apiList = document.getElementById('apiList');
+      apiList.innerHTML = `
+                <div class="text-center py-12">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/10 flex items-center justify-center">
+                        <span class="material-icons text-red-400 text-3xl">error</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-foreground mb-2">Error Loading Documentation</h3>
+                    <p class="text-sm text-muted-foreground mb-4">${message}</p>
+                    <button onclick="loadApiData()" class="btn-primary text-white px-4 py-2 rounded-lg text-sm font-medium">
+                        <span class="material-icons text-sm mr-2">refresh</span>
+                        Retry
+                    </button>
+                </div>
+            `;
+    }
+    
+    function initializeSearch() {
+      const searchInput = document.getElementById('searchInput');
+      const clearSearch = document.getElementById('clearSearch');
+      const resetSearch = document.getElementById('resetSearch');
+      const searchCount = document.getElementById('searchCount');
+      
+      function updateSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const apiItems = document.querySelectorAll('.api-item');
+        const categoryGroups = document.querySelectorAll('.category-group');
+        const noResults = document.getElementById('noResults');
+        
+        let visibleCount = 0;
+        let visibleCategories = 0;
+        
+        categoryGroups.forEach(group => {
+          const categoryItems = group.querySelectorAll('.api-item');
+          let hasVisibleItems = false;
+          let categoryItemCount = 0;
+          
+          categoryItems.forEach(item => {
+            const path = item.getAttribute('data-path').toLowerCase();
+            const name = item.getAttribute('data-name').toLowerCase();
+            const method = item.getAttribute('data-method').toLowerCase();
+            const category = item.getAttribute('data-category').toLowerCase();
+            
+            const isVisible = searchTerm === '' ||
+              path.includes(searchTerm) ||
+              name.includes(searchTerm) ||
+              method.includes(searchTerm) ||
+              category.includes(searchTerm);
+            
+            item.style.display = isVisible ? 'block' : 'none';
+            
+            if (isVisible) {
+              visibleCount++;
+              categoryItemCount++;
+              hasVisibleItems = true;
+            }
+          });
+          
+          // Update category visibility
+          if (hasVisibleItems) {
+            group.style.display = 'block';
+            visibleCategories++;
+          } else {
+            group.style.display = 'none';
+          }
+          
+          // Update category count
+          const countElement = group.querySelector('p.text-xs');
+          if (countElement) {
+            countElement.textContent = `${categoryItemCount} endpoint${categoryItemCount !== 1 ? 's' : ''}`;
+          }
+        });
+        
+        // Update UI
+        searchCount.textContent = searchTerm === '' ? '' : `${visibleCount} result${visibleCount !== 1 ? 's' : ''}`;
+        
+        if (searchTerm !== '' && visibleCount === 0) {
+          noResults.classList.remove('hidden');
+          noResults.classList.add('fade-in');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+      
+      searchInput.addEventListener('input', updateSearch);
+      
+      clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        updateSearch();
+        searchInput.focus();
+      });
+      
+      resetSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        updateSearch();
+      });
+      
+      // Initialize
+      updateSearch();
+    }
+    
+    function toggleCategory(categoryIndex) {
+      const content = document.getElementById(`category-${categoryIndex}`);
+      const icon = document.getElementById(`category-icon-${categoryIndex}`);
+      
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        content.classList.add('animate-slide-down');
+        icon.style.transform = 'rotate(180deg)';
+        setTimeout(() => content.classList.remove('animate-slide-down'), 200);
+      } else {
+        content.classList.add('animate-slide-up');
+        icon.style.transform = 'rotate(0deg)';
+        setTimeout(() => {
+          content.classList.add('hidden');
+          content.classList.remove('animate-slide-up');
+        }, 200);
+      }
+    }
+    
+    function toggleEndpoint(categoryIndex, endpointIndex) {
+      const content = document.getElementById(`endpoint-${categoryIndex}-${endpointIndex}`);
+      const icon = document.getElementById(`endpoint-icon-${categoryIndex}-${endpointIndex}`);
+      
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        content.classList.add('animate-slide-down');
+        icon.style.transform = 'rotate(180deg)';
+        setTimeout(() => content.classList.remove('animate-slide-down'), 200);
+      } else {
+        content.classList.add('animate-slide-up');
+        icon.style.transform = 'rotate(0deg)';
+        setTimeout(() => {
+          content.classList.add('hidden');
+          content.classList.remove('animate-slide-up');
+        }, 200);
+      }
+    }
+    
+    async function executeRequest(event, categoryIndex, endpointIndex, method, path) {
+      event.preventDefault();
+      
+      const form = event.target;
+      const responseElement = document.getElementById(`response-${categoryIndex}-${endpointIndex}`);
+      const responseContent = document.getElementById(`response-content-${categoryIndex}-${endpointIndex}`);
+      const clearButton = document.getElementById(`clear-${categoryIndex}-${endpointIndex}`);
+      const hostSelect = document.getElementById('hostSelect');
+      const selectedHost = hostSelect.value;
+      
+      if (!selectedHost) {
+        alert('Please select an API server first.');
+        return;
+      }
+      
+      let fullUrl = selectedHost + path;
+      
+      try {
+        const requestConfig = {
+          method: method,
+          headers: {}
+        };
+        
+        if (method === 'GET') {
+          const formData = new FormData(form);
+          const params = new URLSearchParams();
+          for (let [key, value] of formData.entries()) {
+            if (value) params.append(key, value);
+          }
+          if (params.toString()) fullUrl += '?' + params.toString();
+        } else {
+          const formData = new FormData(form);
+          let hasFile = false;
+          
+          form.querySelectorAll("input[type=file]").forEach(input => {
+            if (input.files.length > 0) hasFile = true;
+          });
+          
+          if (hasFile) {
+            requestConfig.body = formData;
+          } else {
+            const jsonBody = {};
+            for (let [key, value] of formData.entries()) {
+              if (value) jsonBody[key] = value;
+            }
+            if (Object.keys(jsonBody).length > 0) {
+              requestConfig.headers['Content-Type'] = 'application/json';
+              requestConfig.body = JSON.stringify(jsonBody);
+            }
+          }
+        }
+        
+        // Show loading state
+        responseContent.innerHTML = `
+                    <div class="flex items-center justify-center py-8">
+                        <div class="loader"></div>
+                        <span class="ml-3 text-sm text-muted-foreground">Sending request...</span>
+                    </div>
+                `;
+        responseElement.classList.remove('hidden');
+        responseElement.classList.add('animate-slide-down');
+        
+        const response = await fetch(fullUrl, requestConfig);
+        const contentType = response.headers.get("content-type");
+        
+        let bodyHtml = "";
+        let statusColor = response.ok ? 'text-green-400' : 'text-red-400';
+        
+        if (contentType && contentType.includes("application/json")) {
+          const responseData = await response.json();
+          const jsonString = JSON.stringify(responseData, null, 2);
+          bodyHtml = `<pre class="text-foreground/90 text-sm whitespace-pre-wrap font-mono">${jsonString}</pre>`;
+        } else if (contentType && contentType.startsWith("image/")) {
+          const blob = await response.blob();
+          const imageUrl = URL.createObjectURL(blob);
+          bodyHtml = `<div class="flex flex-col items-center">
+                        <img src="${imageUrl}" alt="API Response" class="max-w-full max-h-48 rounded-lg border border-border"/>
+                        <p class="text-xs text-muted-foreground mt-2">Image Response</p>
+                    </div>`;
+        } else {
+          const textData = await response.text();
+          bodyHtml = `<pre class="text-foreground/90 text-sm whitespace-pre-wrap font-mono">${textData}</pre>`;
+        }
+        
+        const headerHtml = `<div class="text-xs mb-4 p-3 bg-secondary/50 rounded-lg">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div><span class="text-muted-foreground">Method:</span> <span class="font-mono">${method}</span></div>
+                        <div><span class="text-muted-foreground">Status:</span> <span class="font-mono ${statusColor}">${response.status} ${response.statusText}</span></div>
+                        <div><span class="text-muted-foreground">URL:</span> <span class="font-mono text-xs truncate" title="${fullUrl}">${fullUrl}</span></div>
+                    </div>
+                </div>`;
+        
+        responseContent.innerHTML = headerHtml + bodyHtml;
+        
+      } catch (error) {
+        responseContent.innerHTML = `
+                    <div class="text-xs mb-4 p-3 bg-red-500/10 rounded-lg border border-red-500/20">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                            <div><span class="text-muted-foreground">Method:</span> <span class="font-mono">${method}</span></div>
+                            <div><span class="text-muted-foreground">Status:</span> <span class="font-mono text-red-400">Error</span></div>
+                            <div><span class="text-muted-foreground">URL:</span> <span class="font-mono text-xs truncate" title="${fullUrl}">${fullUrl}</span></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-red-500/10 rounded-lg border border-red-500/20">
+                        <p class="text-red-400 text-sm font-medium">Request Failed</p>
+                        <p class="text-red-400/80 text-xs mt-1">${error.message}</p>
+                    </div>
+                `;
+        responseElement.classList.remove('hidden');
+        responseElement.classList.add('animate-slide-down');
+      }
+      
+      clearButton.classList.remove('hidden');
+      setTimeout(() => responseElement.classList.remove('animate-slide-down'), 200);
+    }
+    
+    function clearResponse(categoryIndex, endpointIndex) {
+      const responseElement = document.getElementById(`response-${categoryIndex}-${endpointIndex}`);
+      const responseContent = document.getElementById(`response-content-${categoryIndex}-${endpointIndex}`);
+      const clearButton = document.getElementById(`clear-${categoryIndex}-${endpointIndex}`);
+      
+      responseElement.classList.add('animate-slide-up');
+      setTimeout(() => {
+        responseElement.classList.add('hidden');
+        responseElement.classList.remove('animate-slide-up', 'animate-slide-down');
+        responseContent.innerHTML = '';
+        clearButton.classList.add('hidden');
+      }, 200);
+    }
+    
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', loadApiData);
+  </script>
+</body>
+</html>
