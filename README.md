@@ -57,7 +57,7 @@ GET '/adm/nvrapi'
 
 ## Structure
 ```
- NvLabs
+ Open-NvLabs
 ├──  api
 │   ├──  ai
 │   │   ├──  gpt.js
@@ -86,10 +86,14 @@ GET '/adm/nvrapi'
 │       ├──  nglsender.js
 │       ├──  nvsu.js
 │       └──  whatanime.js
+├──  data
+│   └──  banned-ips.json
 ├──  Dockerfile
 ├──  files
 ├──  index.js
 ├──  LICENSE
+├──  logs
+│   └──  requests.log
 ├──  package.json
 ├──  public
 │   ├──  errorPage
